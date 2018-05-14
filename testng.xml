@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="PhpTravels" verbose="1">
-	<test name="Functional Tests">
+	<!-- <test name="Functional Tests">
 		<classes>
 			<class name="com.selenium.hybridfw.tests.CarsTests" />
 			<class name="com.selenium.hybridfw.tests.HomeTests" />
 		</classes>
-	</test>
+	</test> -->
 
 	<!-- <test name="Regression1"> <classes> <class name="test.sample.ParameterSample"/> 
 		<class name="test.sample.ParameterTest"/> </classes> </test> -->
@@ -15,6 +15,7 @@
 		<parameter name="sUsername" value="testuser_1" />
 		<parameter name="sPassword" value="Test@123" />
 		<parameter name ="hotelLocation" value="Bangalore" />
+		<parameter name ="results" value="No Results!!" />
 		<classes>
 			<class name="com.selenium.hybridfw.tests.HomeTests" />
 		</classes>

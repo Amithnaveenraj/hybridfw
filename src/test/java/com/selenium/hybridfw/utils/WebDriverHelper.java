@@ -12,6 +12,7 @@ public class WebDriverHelper {
 		System.setProperty("webdriver.chrome.driver","C:/Users/Hp/Appium_Demo/hybridfw/src/test/java/resources/chromedriver.exe");
 		driver=new ChromeDriver();
 		driver.navigate().to("http://phptravels.net");
+		driver.manage().window().maximize();
 		}
 		return driver;
 		

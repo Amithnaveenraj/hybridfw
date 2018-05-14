@@ -81,7 +81,7 @@
 				
 				<configuration>
 					<!-- From Email address -->
-					<from>@gmail.com</from>
+					<from>tech.naveenks@gmail.com</from>
 					
 					<!--  Email subject -->
 					<subject>Test Automation Report</subject>
@@ -97,12 +97,12 @@
 					<mailAltConfig>true</mailAltConfig>
 					
 					<!-- Email Authentication(USername and Password) -->
-					<mailuser>@gmail.com</mailuser>
-					<mailpassword></mailpassword>
+					<mailuser>tech.naveenks@gmail.com</mailuser>
+					<mailpassword>Amith@2018</mailpassword>
 					
 					<receivers>
 						<!-- To Email address -->
-						<receiver>to@gmail.com</receiver>
+						<receiver>tech.naveenks@gmail.com</receiver>
 					</receivers>
 					
 					<fileSets>
