@@ -47,9 +47,15 @@
 			<version>6.10</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.relevantcodes</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>2.41.2</version>
+		</dependency>
+
 	</dependencies>
-	
-	
+
+
 	<build>
 		<plugins>
 
@@ -63,69 +69,70 @@
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
-			
-			
+
+
 			<!-- Post-Man plugin -->
-		 <plugin>
-			<groupId>ch.fortysix</groupId>
-			<artifactId>maven-postman-plugin</artifactId>
-			<executions>
-				<execution>
-				
-				<id>send a mail</id>
-				<phase>test</phase>
-				<goals>
-				<goal>send-mail</goal>
-				</goals>
-				<inherited>true</inherited>
-				
-				<configuration>
-					<!-- From Email address -->
-					<from>tech.naveenks@gmail.com</from>
-					
-					<!--  Email subject -->
-					<subject>Test Automation Report</subject>
-					
-					<!-- Fail the build if the mail doesnt reach -->
-					<failonerror>true</failonerror>
-					
-					<!-- host -->
-					<mailhost>smtp.gmail.com</mailhost>
-					<!-- port of the host -->
-					<mailport>465</mailport>
-					<mailssl>true</mailssl>
-					<mailAltConfig>true</mailAltConfig>
-					
-					<!-- Email Authentication(USername and Password) -->
-					<mailuser>tech.naveenks@gmail.com</mailuser>
-					<mailpassword>Amith@2018</mailpassword>
-					
-					<receivers>
-						<!-- To Email address -->
-						<receiver>tech.naveenks@gmail.com</receiver>
-					</receivers>
-					
-					<fileSets>
-					<fileSet>
-						<!-- Report directory Path -->
-						<directory>C:\Users\Hp\Appium_Demo\hybridfw\target\surefire-reports</directory>
-						<includes>
-							<!-- Report file name -->
-							<include>emailable-report.html</include>
-						</includes>
-						<!-- Use Regular Expressions like **/*.html if you want all the html files to send-->
-						</fileSet>
-					</fileSets>				
-				
-				</configuration>
-				</execution>
-			</executions>
-		</plugin>
-			
-			
+			<plugin>
+				<groupId>ch.fortysix</groupId>
+				<artifactId>maven-postman-plugin</artifactId>
+				<executions>
+					<execution>
+
+						<id>send a mail</id>
+						<phase>test</phase>
+						<goals>
+							<goal>send-mail</goal>
+						</goals>
+						<inherited>true</inherited>
+
+						<configuration>
+							<!-- From Email address -->
+							<from>tech.naveenks@gmail.com</from>
+
+							<!-- Email subject -->
+							<subject>Test Automation Report</subject>
+
+							<!-- Fail the build if the mail doesnt reach -->
+							<failonerror>true</failonerror>
+
+							<!-- host -->
+							<mailhost>smtp.gmail.com</mailhost>
+							<!-- port of the host -->
+							<mailport>465</mailport>
+							<mailssl>true</mailssl>
+							<mailAltConfig>true</mailAltConfig>
+
+							<!-- Email Authentication(USername and Password) -->
+							<mailuser>tech.naveenks@gmail.com</mailuser>
+							<mailpassword></mailpassword>
+
+							<receivers>
+								<!-- To Email address -->
+								<receiver>tech.naveenks@gmail.com</receiver>
+							</receivers>
+
+							<fileSets>
+								<fileSet>
+									<!-- Report directory Path -->
+									<directory>C:\Users\Hp\Appium_Demo\hybridfw\target\surefire-reports</directory>
+									<includes>
+										<!-- Report file name -->
+										<include>emailable-report.html</include>
+									</includes>
+									<!-- Use Regular Expressions like **/*.html if you want all the 
+										html files to send -->
+								</fileSet>
+							</fileSets>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
 
 		</plugins>
 	</build>
-	
-	
+
+
 </project>

@@ -4,13 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.selenium.hybridfw.pages.CarsPage;
 import com.selenium.hybridfw.pages.HomePage;
 import com.selenium.hybridfw.pages.HotelsPage;
 import com.selenium.hybridfw.utils.BaseTest;
-
+import com.selenium.hybridfw.utils.WebDriverHelper;
+//@Listeners(com.selenium.hybridfw.utils.Listeners.class)	
 public class HomeTests extends BaseTest {
 	BaseTest test;
 	HomePage homePage;
@@ -26,11 +28,12 @@ public class HomeTests extends BaseTest {
 	
 	@Test
 	@Parameters({ "hotelLocation" , "results"})
-	public void verify_parameter(String Location, String ExpectedResult) throws InterruptedException {
+	public void verify_parameter(String Location, String ExpectedResult) throws Exception {
 		homePage.enterLocation(Location);
-		hotelsPage = homePage.clickOnSearch();
+		//hotelsPage = homePage.clickOnSearch();
 		Assert.assertEquals(homePage.getResults(), ExpectedResult);
 		homePage = hotelsPage.clickOnLogo();
+		//WebDriverHelper.getscreenshot();
 		System.out.println("executed");
 	}
 
