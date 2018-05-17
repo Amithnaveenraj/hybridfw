@@ -1,7 +1,10 @@
 package com.selenium.hybridfw.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -10,15 +13,45 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDriverHelper {
+	
+	protected static Properties _userProperties = new Properties();
+	
 
 	static WebDriver driver = null;
+	
+	public WebDriverHelper() throws IOException{
+		loadProperties();
+	}
 
-	public static WebDriver createDriver() {
+	private static Properties loadProperties() throws IOException {
+		try{
+			FileInputStream configStream = new FileInputStream("config.user.properties");
+			_userProperties.load(configStream);
+			return _userProperties;
+		} catch (FileNotFoundException e){
+			System.out.println("No config file Found");
+		}
+		return _userProperties;
+		
+	}
+	
+	public static String getStringProperty(String propertyname) throws FileNotFoundException{
+		try{
+			_userProperties = loadProperties();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		String returnValue = _userProperties.getProperty(propertyname);
+		return returnValue;
+	}
+
+	public static WebDriver createDriver() throws FileNotFoundException {
 		if (driver == null) {
 			System.setProperty("webdriver.chrome.driver",
 					"C:/Users/Hp/Appium_Demo/hybridfw/src/test/java/resources/chromedriver.exe");
 			driver = new ChromeDriver();
-			driver.navigate().to("http://phptravels.net");
+			//driver.navigate().to("http://phptravels.net");
+			driver.navigate().to(getStringProperty("url"));
 			driver.manage().window().maximize();
 		}
 		return driver;
@@ -43,5 +76,7 @@ public class WebDriverHelper {
 			}
  }*/
 	}
+	
+	
 
 }

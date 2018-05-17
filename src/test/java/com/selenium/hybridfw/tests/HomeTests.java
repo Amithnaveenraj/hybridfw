@@ -1,5 +1,6 @@
 package com.selenium.hybridfw.tests;
-
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -7,6 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import com.selenium.hybridfw.pages.CarsPage;
 import com.selenium.hybridfw.pages.HomePage;
 import com.selenium.hybridfw.pages.HotelsPage;
@@ -19,31 +21,50 @@ public class HomeTests extends BaseTest {
 	CarsPage carsPage;
 	WebDriver driver;
 	HotelsPage hotelsPage;
-
+	private static final Logger log = LogManager.getLogger(HomeTests.class);
 	@DataProvider(name = "Locations")
 
 	public static Object[][] Locations() {
 		return new Object[][] { { "Bangalore" }, { "Chennai"}, { "New Delhi" }};
 	}
+	SoftAssert assertion = new SoftAssert();
 	
 	@Test
 	@Parameters({ "hotelLocation" , "results"})
 	public void verify_parameter(String Location, String ExpectedResult) throws Exception {
+		log.info(" Test case Started");
+		log.info(" Navigated to PHP Travels.net");
 		homePage.enterLocation(Location);
-		//hotelsPage = homePage.clickOnSearch();
+		log.info(" Entered Location");
+		hotelsPage = homePage.clickOnSearch();
 		Assert.assertEquals(homePage.getResults(), ExpectedResult);
 		homePage = hotelsPage.clickOnLogo();
 		//WebDriverHelper.getscreenshot();
 		System.out.println("executed");
+		SoftAssert assertion = new SoftAssert();
+		assertion.assertEquals(true, false);
+		assertion.assertEquals(false, false);
+		assertion.assertEquals(true, true);
+		assertion.assertAll();
+		
+		assertion.assertEquals(true, true);
+		System.out.println("Assertion 1");
+		assertion.assertEquals(true, false);
+		System.out.println("Assertion 2");
+		assertion.assertEquals(true, true);
+		System.out.println("Assertion 3");
+		assertion.assertAll();
+		
 	}
 
-	@Test(dataProvider = "Locations")
+	@Test(dataProvider = "Locations", enabled=false)
 	public void verify(String Location) throws InterruptedException {
 		System.out.println("executed");
 		homePage.enterLocation(Location);
 		hotelsPage = homePage.clickOnSearch();
 		Assert.assertEquals(homePage.getResults(), "No Results!!");
 		homePage = hotelsPage.clickOnLogo();
+		assertion.assertEquals("", "");
 	}
 
 	@BeforeClass
