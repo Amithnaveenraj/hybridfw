@@ -13,6 +13,7 @@ import com.selenium.hybridfw.pages.CarsPage;
 import com.selenium.hybridfw.pages.HomePage;
 import com.selenium.hybridfw.pages.HotelsPage;
 import com.selenium.hybridfw.utils.BaseTest;
+import com.selenium.hybridfw.utils.DataUtility;
 import com.selenium.hybridfw.utils.WebDriverHelper;
 //@Listeners(com.selenium.hybridfw.utils.Listeners.class)	
 public class HomeTests extends BaseTest {
@@ -28,7 +29,13 @@ public class HomeTests extends BaseTest {
 		return new Object[][] { { "Bangalore" }, { "Chennai"}, { "New Delhi" }};
 	}
 	SoftAssert assertion = new SoftAssert();
-	
+	/*
+	@Test
+	public void verify_data() throws Exception{
+		DataUtility.setExcelFile();
+		System.out.println("===================="+DataUtility.getCellData(1,1));
+	}
+	*/
 	@Test
 	@Parameters({ "hotelLocation" , "results"})
 	public void verify_parameter(String Location, String ExpectedResult) throws Exception {
@@ -41,7 +48,7 @@ public class HomeTests extends BaseTest {
 		homePage = hotelsPage.clickOnLogo();
 		//WebDriverHelper.getscreenshot();
 		System.out.println("executed");
-		SoftAssert assertion = new SoftAssert();
+	/*	SoftAssert assertion = new SoftAssert();
 		assertion.assertEquals(true, false);
 		assertion.assertEquals(false, false);
 		assertion.assertEquals(true, true);
@@ -53,7 +60,7 @@ public class HomeTests extends BaseTest {
 		System.out.println("Assertion 2");
 		assertion.assertEquals(true, true);
 		System.out.println("Assertion 3");
-		assertion.assertAll();
+		assertion.assertAll();*/
 		
 	}
 

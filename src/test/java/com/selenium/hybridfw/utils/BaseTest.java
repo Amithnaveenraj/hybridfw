@@ -1,9 +1,6 @@
 package com.selenium.hybridfw.utils;
 
-import java.io.FileNotFoundException;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -11,7 +8,7 @@ public class BaseTest {
 	WebDriver driver;
 	
 	@BeforeClass
-	public void beforeAllClasses() throws FileNotFoundException{
+	public void beforeAllClasses() throws Exception{
 		driver= WebDriverHelper.createDriver();
 	}
 	
