@@ -64,7 +64,7 @@ public class HomeTests extends BaseTest {
 		
 	}
 
-	@Test(dataProvider = "Locations", enabled=false)
+	@Test(dataProvider = "Locations", enabled=true)
 	public void verify(String Location) throws InterruptedException {
 		System.out.println("executed");
 		homePage.enterLocation(Location);
